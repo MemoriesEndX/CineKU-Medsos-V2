@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@prisma/client": "^7.6.0",
     "axios": "^1.14.0",
     "bcrypt": "^6.0.0",
     "class-variance-authority": "^0.7.1",
@@ -33,7 +32,6 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
     "postcss": "^8.5.8",
-    "prisma": "^7.6.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^5"
   }
