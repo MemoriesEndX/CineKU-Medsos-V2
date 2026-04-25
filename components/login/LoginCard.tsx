@@ -1,47 +1,94 @@
-import Link from "next/link";
+"use client";
 
-import { LOGIN_BENEFITS } from "@/data/landing";
+import type { FormEvent } from "react";
+import Link from "next/link";
 
 import AppLogo from "@/components/shared/AppLogo";
 import GoogleLoginButton from "@/components/login/GoogleLoginButton";
 
 export default function LoginCard() {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    // TODO: Integrasikan login email/password ke API auth Pilah Yuk!!
+    // TODO: Setelah auth valid, arahkan user ke dashboard
+  };
+
   return (
-    <section className="w-full max-w-md rounded-3xl border border-slate-100 bg-white p-6 shadow-sm sm:p-8">
+    <section className="w-full max-w-md rounded-2xl border border-emerald-300/30 bg-white/95 p-6 shadow-2xl shadow-emerald-900/15 backdrop-blur-sm sm:p-8">
       <header className="text-center">
         <div className="mx-auto inline-flex">
           <AppLogo href="/" />
         </div>
-        <h1 className="mt-6 text-2xl font-bold text-slate-900">Selamat Datang Kembali 👋</h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Masuk untuk melanjutkan misi daur ulangmu hari ini.
+
+        <h1 className="mt-5 text-2xl font-bold tracking-tight text-slate-900">Masuk ke Pilah Yuk!!</h1>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">
+          Lanjutkan perjalanan memilah sampah dan kumpulkan poin ramah lingkungan.
         </p>
       </header>
 
-      <div className="mt-6">
-        <GoogleLoginButton />
+      <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+        <div className="space-y-2">
+          <label htmlFor="email" className="text-sm font-medium text-slate-800">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200/70"
+            placeholder="nama@email.com"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex items-center justify-between gap-4">
+            <label htmlFor="password" className="text-sm font-medium text-slate-800">
+              Kata sandi
+            </label>
+            <Link
+              href="/forgot-password"
+              className="text-xs font-medium text-emerald-700 transition hover:text-emerald-600 hover:underline"
+            >
+              Lupa kata sandi?
+            </Link>
+          </div>
+
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            autoComplete="current-password"
+            className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200/70"
+            placeholder="Masukkan kata sandi"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="h-11 w-full rounded-xl bg-linear-to-r from-emerald-500 via-emerald-500 to-lime-500 text-sm font-semibold text-white shadow-lg shadow-emerald-900/20 transition hover:brightness-105 active:scale-[0.99]"
+        >
+          Masuk
+        </button>
+      </form>
+
+      <div className="my-5 flex items-center gap-3" aria-hidden="true">
+        <span className="h-px flex-1 bg-slate-200" />
+        <span className="text-xs font-medium uppercase tracking-[0.15em] text-slate-500">atau</span>
+        <span className="h-px flex-1 bg-slate-200" />
       </div>
 
-      <div className="my-6 h-px bg-slate-200" />
+      <GoogleLoginButton />
 
-      <ul className="space-y-2" aria-label="Keuntungan menggunakan Pilah Yuk!!">
-        {LOGIN_BENEFITS.map((benefit) => (
-          <li key={benefit.id} className="flex items-start gap-2 text-sm text-slate-600">
-            <span className="mt-0.5 text-emerald-600" aria-hidden>
-              ✓
-            </span>
-            <span>{benefit.text}</span>
-          </li>
-        ))}
-      </ul>
-
-      <footer className="mt-6 text-center text-xs text-slate-500">
+      <footer className="mt-6 text-center text-sm text-slate-600">
         <p>
-          Dengan masuk, Anda menyetujui Ketentuan Layanan dan Kebijakan Privasi.
+          Belum punya akun?{" "}
+          <Link href="/register" className="font-semibold text-emerald-700 transition hover:text-emerald-600 hover:underline">
+            Daftar sekarang
+          </Link>
         </p>
-        <Link href="/" className="mt-3 inline-flex text-sm font-medium text-emerald-700 hover:underline">
-          Kembali ke Beranda
-        </Link>
       </footer>
     </section>
   );

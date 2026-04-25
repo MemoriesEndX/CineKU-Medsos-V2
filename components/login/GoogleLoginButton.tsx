@@ -2,16 +2,15 @@
 
 export default function GoogleLoginButton() {
   const handleGoogleLogin = (): void => {
-    // TODO: hubungkan dengan Google Auth
-    // TODO: setelah login valid, simpan user ke database menggunakan Prisma
-    window.location.assign("/dashboard");
+    // TODO: Integrasikan Google Auth dengan signIn("google")
+    // TODO: Setelah Google Auth valid, simpan user ke database dengan Prisma
   };
 
   return (
     <button
       type="button"
       onClick={handleGoogleLogin}
-      className="flex w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 transition hover:border-emerald-300 hover:bg-emerald-50"
+      className="flex h-11 w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition hover:border-emerald-300 hover:bg-emerald-50"
       aria-label="Lanjutkan dengan Google"
     >
       <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
