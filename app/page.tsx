@@ -1,33 +1,39 @@
-import Link from "next/link";
+import Navbar from '@/components/landing/Navbar';
+import HeroSection from '@/components/landing/HeroSection';
+import HowItWorksSection from '@/components/landing/HowItWorksSection';
+import FeaturesSection from '@/components/landing/FeaturesSection';
+import DemoPreviewSection from '@/components/landing/DemoPreviewSection';
+import ImpactStatsSection from '@/components/landing/ImpactStatsSection';
+import LeaderboardPreview from '@/components/landing/LeaderboardPreview';
+import FinalCtaSection from '@/components/landing/FinalCtaSection';
+import Footer from '@/components/landing/Footer';
 
-import CtaSection from "@/components/landing/CtaSection";
-import DashboardPreview from "@/components/landing/DashboardPreview";
-import FeaturesSection from "@/components/landing/FeaturesSection";
-import HeroSection from "@/components/landing/HeroSection";
-import HowItWorksSection from "@/components/landing/HowItWorksSection";
-import AppLogo from "@/components/shared/AppLogo";
-import Container from "@/components/shared/Container";
+export const metadata = {
+  title: 'Pilah Yuk!! - Platform Gamifikasi Daur Ulang dengan AI',
+  description:
+    'Upload foto sampah, AI akan mengenalinya, dan kumpulkan poin serta badge. Bergabunglah dengan komunitas pengguna yang membantu lingkungan.',
+  keywords:
+    'sampah, daur ulang, AI, klasifikasi sampah, gamifikasi, poin, badge, leaderboard',
+  author: 'Pilah Yuk!!',
+  openGraph: {
+    title: 'Pilah Yuk!! - Daur Ulang Jadi Lebih Menyenangkan',
+    description: 'Platform gamifikasi daur ulang berbasis AI untuk masyarakat Indonesia',
+    type: 'website',
+  },
+};
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main className="min-h-screen bg-linear-to-br from-white via-emerald-50 to-lime-50">
-      <header className="sticky top-0 z-40 border-b border-slate-100 bg-white/90 backdrop-blur-sm">
-        <Container className="flex items-center justify-between py-4">
-          <AppLogo />
-          <Link
-            href="/login"
-            className="rounded-xl bg-linear-to-r from-emerald-600 to-lime-500 px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-          >
-            Masuk
-          </Link>
-        </Container>
-      </header>
-
+    <main className="min-h-screen bg-white">
+      <Navbar />
       <HeroSection />
       <HowItWorksSection />
       <FeaturesSection />
-      <DashboardPreview />
-      <CtaSection />
+      <DemoPreviewSection />
+      <ImpactStatsSection />
+      <LeaderboardPreview />
+      <FinalCtaSection />
+      <Footer />
     </main>
   );
 }

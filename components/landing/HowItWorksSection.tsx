@@ -1,40 +1,89 @@
-import { HOW_IT_WORKS_HEADER, HOW_IT_WORKS_ITEMS } from "@/data/landing";
-import type { HowItWorksItem } from "@/types";
+'use client';
 
-import Container from "@/components/shared/Container";
-import SectionHeader from "@/components/shared/SectionHeader";
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { howItWorksSteps } from '@/data/landing';
 
-const accentClassMap: Record<HowItWorksItem["accent"], string> = {
-  emerald: "border-emerald-200 bg-emerald-50",
-  sky: "border-sky-200 bg-sky-50",
-  amber: "border-amber-200 bg-amber-50",
-  violet: "border-violet-200 bg-violet-50",
-};
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HowItWorksSection() {
-  return (
-    <section id="cara-kerja" className="border-y border-slate-100 bg-white py-14 sm:py-20">
-      <Container>
-        <SectionHeader
-          title={HOW_IT_WORKS_HEADER.title}
-          description={HOW_IT_WORKS_HEADER.description}
-        />
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {HOW_IT_WORKS_ITEMS.map((item) => (
-            <li
-              key={item.id}
-              className={`rounded-2xl border p-5 ${accentClassMap[item.accent]}`}
+  useEffect(() => {
+    if (!containerRef.current || !sectionRef.current) return;
+
+    const container = containerRef.current;
+    const section = sectionRef.current;
+
+    const ctx = gsap.context(() => {
+      const cards = container.querySelectorAll('[data-step]');
+
+      gsap.to(cards, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 60%',
+          end: 'center 30%',
+          toggleActions: 'play none none reverse',
+        },
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        duration: 0.6,
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="how-it-works"
+      className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white"
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Cara Kerja Pilah Yuk!!
+          </h2>
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            Empat langkah mudah untuk mulai memilah sampah dan menyelamatkan lingkungan.
+          </p>
+        </div>
+
+        {/* Steps Grid */}
+        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6">
+          {howItWorksSteps.map((step) => (
+            <div
+              key={step.id}
+              data-step={step.id}
+              className="opacity-0 translate-y-8 flex flex-col items-center text-center relative"
             >
-              <p className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">
-                {item.step}
-              </p>
-              <h3 className="mt-4 text-base font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{item.description}</p>
-            </li>
+              {/* Connector line for desktop */}
+              {step.id < 4 && (
+                <div className="hidden lg:block absolute top-12 -right-8 w-16 h-1 bg-gradient-to-r from-emerald-500 to-transparent" />
+              )}
+
+              {/* Step number badge */}
+              <div className="relative mb-6 z-10">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg">
+                  <span className="text-3xl font-bold text-white">{step.id}</span>
+                </div>
+              </div>
+
+              {/* Icon */}
+              <div className="text-6xl mb-4">{step.icon}</div>
+
+              {/* Content */}
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-sm">{step.description}</p>
+            </div>
           ))}
-        </ol>
-      </Container>
+        </div>
+      </div>
     </section>
   );
 }
