@@ -1,12 +1,12 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import Link from "next/link";
 
 import DashboardShell from "../../components/dashboard/DashboardShell";
 import BadgeCard from "@/components/dashboard/BadgeCard";
 import ChallengeProgress from "@/components/dashboard/ChallengeProgress";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import LeaderboardMini from "@/components/dashboard/LeaderboardMini";
+import LogoutButton from "@/components/dashboard/LogoutButton";
 import StatCard from "@/components/dashboard/StatCard";
 import UploadCard from "@/components/dashboard/UploadCard";
 import AppLogo from "@/components/shared/AppLogo";
@@ -40,12 +40,7 @@ export default async function DashboardPage() {
       <header className="sticky top-0 z-40 border-b border-emerald-100/80 bg-white/90 backdrop-blur-sm">
         <Container className="flex items-center justify-between py-4">
           <AppLogo href="/" />
-          <Link
-            href="/login"
-            className="rounded-xl border border-emerald-200 bg-white px-3 py-2 text-sm font-medium text-emerald-700 transition hover:border-emerald-300 hover:bg-emerald-50"
-          >
-            Ganti Akun
-          </Link>
+          <LogoutButton />
         </Container>
       </header>
 

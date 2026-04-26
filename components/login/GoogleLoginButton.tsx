@@ -1,19 +1,35 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { signIn } from "next-auth/react";
 
 export default function GoogleLoginButton() {
+  const [isLoading, setIsLoading] = useState(false);
+  const inFlightRef = useRef(false);
+
   const handleGoogleLogin = async (): Promise<void> => {
-    await signIn("google", {
-      callbackUrl: "/dashboard",
-    });
+    if (isLoading || inFlightRef.current) return;
+
+    inFlightRef.current = true;
+    setIsLoading(true);
+
+    try {
+      await signIn("google", {
+        callbackUrl: "/dashboard",
+      });
+    } finally {
+      setIsLoading(false);
+      inFlightRef.current = false;
+    }
   };
 
   return (
     <button
       type="button"
       onClick={handleGoogleLogin}
-      className="flex h-11 w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition hover:border-emerald-300 hover:bg-emerald-50"
+      disabled={isLoading}
+      aria-busy={isLoading}
+      className="flex h-11 w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition hover:border-emerald-300 hover:bg-emerald-50 disabled:cursor-not-allowed disabled:opacity-70"
       aria-label="Lanjutkan dengan Google"
     >
       <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
@@ -34,7 +50,7 @@ export default function GoogleLoginButton() {
           fill="#EA4335"
         />
       </svg>
-      Lanjutkan dengan Google
+      {isLoading ? "Memproses..." : "Lanjutkan dengan Google"}
     </button>
   );
 }
