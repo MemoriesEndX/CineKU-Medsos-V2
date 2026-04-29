@@ -29,7 +29,7 @@ export default function GoogleLoginButton() {
       onClick={handleGoogleLogin}
       disabled={isLoading}
       aria-busy={isLoading}
-      className="flex h-11 w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition hover:border-emerald-300 hover:bg-emerald-50 disabled:cursor-not-allowed disabled:opacity-70"
+      className="flex h-11 w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white px-4 text-sm font-semibold text-slate-800 transition hover:border-amber-300 hover:bg-amber-50 disabled:cursor-not-allowed disabled:opacity-70"
       aria-label="Lanjutkan dengan Google"
     >
       <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>

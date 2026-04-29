@@ -1,39 +1,32 @@
-import Navbar from '@/components/landing/Navbar';
-import HeroSection from '@/components/landing/HeroSection';
-import HowItWorksSection from '@/components/landing/HowItWorksSection';
-import FeaturesSection from '@/components/landing/FeaturesSection';
-import DemoPreviewSection from '@/components/landing/DemoPreviewSection';
-import ImpactStatsSection from '@/components/landing/ImpactStatsSection';
-import LeaderboardPreview from '@/components/landing/LeaderboardPreview';
-import FinalCtaSection from '@/components/landing/FinalCtaSection';
-import Footer from '@/components/landing/Footer';
-
-export const metadata = {
-  title: 'Pilah Yuk!! - Platform Gamifikasi Daur Ulang dengan AI',
-  description:
-    'Upload foto sampah, AI akan mengenalinya, dan kumpulkan poin serta badge. Bergabunglah dengan komunitas pengguna yang membantu lingkungan.',
-  keywords:
-    'sampah, daur ulang, AI, klasifikasi sampah, gamifikasi, poin, badge, leaderboard',
-  author: 'Pilah Yuk!!',
-  openGraph: {
-    title: 'Pilah Yuk!! - Daur Ulang Jadi Lebih Menyenangkan',
-    description: 'Platform gamifikasi daur ulang berbasis AI untuk masyarakat Indonesia',
-    type: 'website',
-  },
-};
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import AboutCineku from '@/components/AboutCineku';
+import ProblemSection from '@/components/ProblemSection';
+import TargetUsers from '@/components/TargetUsers';
+import FeatureSection from '@/components/FeatureSection';
+import HowItWorks from '@/components/HowItWorks';
+import PlatformPreview from '@/components/PlatformPreview';
+import AdvantageSection from '@/components/AdvantageSection';
+import RoadmapSection from '@/components/RoadmapSection';
+import CTASection from '@/components/CTASection';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="w-full bg-slate-950">
       <Navbar />
       <HeroSection />
-      <HowItWorksSection />
-      <FeaturesSection />
-      <DemoPreviewSection />
-      <ImpactStatsSection />
-      <LeaderboardPreview />
-      <FinalCtaSection />
+      <AboutCineku />
+      <ProblemSection />
+      <TargetUsers />
+      <FeatureSection />
+      <HowItWorks />
+      <PlatformPreview />
+      <AdvantageSection />
+      <RoadmapSection />
+      <CTASection />
       <Footer />
     </main>
   );
 }
+  

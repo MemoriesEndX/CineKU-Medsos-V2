@@ -37,7 +37,7 @@ export default async function DashboardPage() {
 
   return (
     <DashboardShell>
-      <header className="sticky top-0 z-40 border-b border-emerald-100/80 bg-white/90 backdrop-blur-sm">
+      <header className="sticky top-0 z-40 border-b border-amber-100/80 bg-white/90 backdrop-blur-sm">
         <Container className="flex items-center justify-between py-4">
           <AppLogo href="/" />
           <LogoutButton />
@@ -61,7 +61,7 @@ export default async function DashboardPage() {
           <LeaderboardMini entries={LEADERBOARD_MINI} />
         </section>
 
-        <section className="rounded-3xl border border-emerald-100 bg-white p-5 shadow-[0_14px_34px_-24px_rgba(16,185,129,0.45)] sm:p-6">
+        <section className="rounded-3xl border border-amber-100 bg-white p-5 shadow-[0_14px_34px_-24px_rgba(16,185,129,0.45)] sm:p-6">
           <h2 className="text-lg font-semibold text-slate-900">Badge Saya</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {USER_BADGES.map((badge, index) => (

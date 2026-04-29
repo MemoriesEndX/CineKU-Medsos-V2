@@ -1,51 +1,68 @@
-import { Leaf, Recycle, Sparkles, Trash2, Wine } from "lucide-react";
+"use client";
+
+import { motion } from "framer-motion";
+import { Aperture, Camera, Clapperboard, Film, Sparkles, Ticket } from "lucide-react";
 
 interface DecorationItem {
   id: string;
-  icon: typeof Recycle;
+  icon: typeof Film;
   className: string;
+  rotate?: boolean;
 }
 
-const DECORATIONS: DecorationItem[] = [
+const cinemaDecorations: DecorationItem[] = [
   {
-    id: "recycle-top-left",
-    icon: Recycle,
-    className:
-      "left-6 top-8 text-emerald-300/65 md:left-12 lg:left-20 lg:top-14 motion-safe:animate-[spin_18s_linear_infinite]",
+    id: "film-top-left",
+    icon: Film,
+    className: "left-6 top-8 text-amber-200/50 md:left-12 lg:left-20 lg:top-14",
+    rotate: true,
   },
   {
-    id: "trash-bottom-left",
-    icon: Trash2,
-    className:
-      "bottom-10 left-5 text-lime-300/55 md:left-12 lg:bottom-16 lg:left-24 motion-safe:animate-pulse",
+    id: "camera-bottom-left",
+    icon: Camera,
+    className: "bottom-10 left-5 text-rose-200/45 md:left-12 lg:bottom-16 lg:left-24",
   },
   {
-    id: "leaf-right",
-    icon: Leaf,
-    className:
-      "right-5 top-24 text-emerald-200/60 md:right-8 lg:right-24 lg:top-20 motion-safe:animate-pulse",
+    id: "clapper-right",
+    icon: Clapperboard,
+    className: "right-5 top-24 text-cyan-200/45 md:right-8 lg:right-24 lg:top-20",
+    rotate: true,
   },
   {
-    id: "bottle-right-mid",
-    icon: Wine,
-    className:
-      "right-6 bottom-24 text-teal-200/55 md:right-10 lg:right-20 motion-safe:animate-pulse",
-  },
-  {
-    id: "sparkles-upper-right",
+    id: "sparkles-right-mid",
     icon: Sparkles,
-    className:
-      "right-24 top-12 hidden text-lime-200/50 lg:block motion-safe:animate-pulse",
+    className: "right-6 bottom-24 text-amber-100/50 md:right-10 lg:right-20",
+  },
+  {
+    id: "ticket-upper-right",
+    icon: Ticket,
+    className: "right-24 top-12 hidden text-rose-100/45 lg:block",
+    rotate: true,
+  },
+  {
+    id: "aperture-center",
+    icon: Aperture,
+    className: "left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 text-white/8 lg:block",
+    rotate: true,
   },
 ];
 
 export default function LoginDecorations() {
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-      {DECORATIONS.map((item) => {
+      {cinemaDecorations.map((item) => {
         const Icon = item.icon;
 
-        return <Icon key={item.id} className={`absolute h-6 w-6 ${item.className}`} strokeWidth={1.8} />;
+        return (
+          <motion.div
+            key={item.id}
+            className={`absolute ${item.className}`}
+            animate={{ y: [0, -8, 0], x: [0, 6, 0], rotate: item.rotate ? [0, 360] : 0 }}
+            transition={{ duration: 5.5 + (item.id.length % 4), repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Icon className="h-6 w-6" strokeWidth={1.8} />
+          </motion.div>
+        );
       })}
     </div>
   );

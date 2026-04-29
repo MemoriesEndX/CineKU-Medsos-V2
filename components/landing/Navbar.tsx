@@ -20,9 +20,9 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2">
-            <span className="text-2xl">♻️</span>
-            <Link href="/" className="text-xl md:text-2xl font-bold text-emerald-600">
-              Pilah Yuk!!
+            <span className="text-2xl">🎬</span>
+            <Link href="/" className="text-xl md:text-2xl font-bold text-amber-600">
+              Cineku
             </Link>
           </div>
 
@@ -32,17 +32,17 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-700 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
+                className="text-gray-700 hover:text-amber-600 transition-colors text-sm font-medium relative group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-600 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-600 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </div>
 
           {/* Desktop CTA Button */}
           <div className="hidden md:block">
-            <button className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105">
+            <button className="px-6 py-2.5 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all duration-300 transform hover:scale-105">
               Coba Sekarang
             </button>
           </div>
@@ -73,13 +73,13 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="block px-3 py-2 rounded-md text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
+                  className="block px-3 py-2 rounded-md text-gray-700 hover:bg-amber-50 hover:text-amber-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <button className="w-full mt-4 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all">
+              <button className="w-full mt-4 px-4 py-2 bg-gradient-to-r from-amber-500 to-rose-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all">
                 Coba Sekarang
               </button>
             </div>

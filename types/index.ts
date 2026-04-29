@@ -40,7 +40,7 @@ export interface DashboardUser {
   readonly name: string;
   readonly points: number;
   readonly level: number;
-  readonly recycledItems: number;
+  readonly projectsCreated: number;
   readonly activeBadge: string;
 }
 

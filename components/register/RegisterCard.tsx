@@ -1,54 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import gsap from "gsap";
-
-import AppLogo from "@/components/shared/AppLogo";
+import { motion } from "framer-motion";
+import { Camera, Clapperboard, Film, Sparkles, Ticket } from "lucide-react";
 
 export default function RegisterCard() {
-  const cardRef = useRef<HTMLElement | null>(null);
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const timeline = gsap.timeline({ defaults: { ease: "power2.out" } });
-
-      timeline
-        .from("[data-register-card]", {
-          y: 32,
-          opacity: 0,
-          duration: 0.8,
-        })
-        .from(
-          "[data-register-input]",
-          {
-            y: 16,
-            opacity: 0,
-            duration: 0.5,
-            stagger: 0.1,
-          },
-          "-=0.45",
-        )
-        .from(
-          "[data-register-action]",
-          {
-            y: 10,
-            opacity: 0,
-            duration: 0.45,
-          },
-          "-=0.2",
-        );
-    }, cardRef);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
@@ -104,105 +66,150 @@ export default function RegisterCard() {
   };
 
   return (
-    <section
-      ref={cardRef}
-      data-register-card
-      className="w-full max-w-md rounded-2xl border border-emerald-200/30 bg-white/95 p-6 shadow-2xl shadow-emerald-950/20 backdrop-blur-md sm:p-8"
+    <motion.section
+      initial={{ opacity: 0, y: 32 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative w-full max-w-md overflow-hidden rounded-[28px] border border-white/10 bg-white/6 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-7"
     >
-      <header className="text-center">
-        <div className="mx-auto inline-flex">
-          <AppLogo href="/" />
-        </div>
+      <div className="pointer-events-none absolute inset-0 hidden overflow-hidden sm:block" aria-hidden="true">
+        <motion.div
+          className="absolute -left-12 top-10 h-28 w-28 rounded-full bg-amber-400/10 blur-3xl"
+          animate={{ y: [0, -12, 0], x: [0, 8, 0] }}
+          transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -right-16 bottom-4 h-36 w-36 rounded-full bg-cyan-400/10 blur-3xl"
+          animate={{ y: [0, -16, 0], x: [0, -10, 0] }}
+          transition={{ duration: 8.2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
-        <h1 className="mt-5 text-2xl font-bold tracking-tight text-slate-900">Buat Akun Pilah Yuk!!</h1>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          Mulai pilah sampah, kumpulkan poin, dan bantu bumi jadi lebih bersih.
-        </p>
-      </header>
+      <div className="relative">
+        <header className="text-center">
+          <div className="mx-auto flex w-fit items-center gap-2 rounded-full border border-amber-300/20 bg-slate-950/50 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-100 shadow-inner shadow-black/20">
+            <Clapperboard className="h-3.5 w-3.5" aria-hidden="true" />
+            Cineku Register
+          </div>
 
-      <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <div className="space-y-2" data-register-input>
-          <label htmlFor="name" className="text-sm font-medium text-slate-800">
-            Nama
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            autoComplete="name"
-            placeholder="Nama lengkap"
-            className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200/70"
-          />
-        </div>
 
-        <div className="space-y-2" data-register-input>
-          <label htmlFor="email" className="text-sm font-medium text-slate-800">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="nama@email.com"
-            className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200/70"
-          />
-        </div>
 
-        <div className="space-y-2" data-register-input>
-          <label htmlFor="age" className="text-sm font-medium text-slate-800">
-            Umur <span className="text-slate-500">(opsional)</span>
-          </label>
-          <input
-            id="age"
-            name="age"
-            type="number"
-            inputMode="numeric"
-            min={8}
-            max={120}
-            placeholder="Contoh: 21"
-            className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200/70"
-          />
-        </div>
+          <h1 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-[2rem]">Buat Akun Cineku</h1>
+          <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:text-[15px]">
+            Simpan film favorit, ikuti tontonan kreator Indonesia, dan nikmati pengalaman discovery yang terasa seperti poster utama di bioskop.
+          </p>
+        </header>
 
-        <div className="space-y-2" data-register-input>
-          <label htmlFor="password" className="text-sm font-medium text-slate-800">
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            required
-            autoComplete="new-password"
-            placeholder="Buat password aman"
-            className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200/70"
-          />
-        </div>
+        <form className="mt-7 space-y-4" onSubmit={handleSubmit}>
+          <motion.div className="space-y-2" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18, duration: 0.5 }}>
+            <label htmlFor="name" className="text-sm font-medium text-slate-200">
+              Nama
+            </label>
+            <div className="group rounded-2xl border border-white/10 bg-slate-950/70 px-3 transition focus-within:border-amber-300/40 focus-within:ring-4 focus-within:ring-amber-400/10">
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-amber-200/70" aria-hidden="true" />
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  autoComplete="name"
+                  placeholder="Nama lengkap"
+                  className="h-12 w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+                />
+              </div>
+            </div>
+          </motion.div>
 
-        <div data-register-action>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="h-11 w-full rounded-xl bg-linear-to-r from-emerald-500 via-emerald-500 to-lime-500 text-sm font-semibold text-white shadow-lg shadow-emerald-900/25 transition hover:brightness-105 active:scale-[0.99]"
-          >
-            {isSubmitting ? "Memproses..." : "Daftar"}
-          </button>
-        </div>
-      </form>
+          <motion.div className="space-y-2" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.5 }}>
+            <label htmlFor="email" className="text-sm font-medium text-slate-200">
+              Email
+            </label>
+            <div className="group rounded-2xl border border-white/10 bg-slate-950/70 px-3 transition focus-within:border-amber-300/40 focus-within:ring-4 focus-within:ring-amber-400/10">
+              <div className="flex items-center gap-2">
+                <Camera className="h-4 w-4 text-amber-200/70" aria-hidden="true" />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder="nama@email.com"
+                  className="h-12 w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+                />
+              </div>
+            </div>
+          </motion.div>
 
-      {errorMessage ? <p className="mt-3 text-sm text-red-600">{errorMessage}</p> : null}
+          <motion.div className="space-y-2" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38, duration: 0.5 }}>
+            <label htmlFor="age" className="text-sm font-medium text-slate-200">
+              Umur <span className="text-slate-400">(opsional)</span>
+            </label>
+            <div className="group rounded-2xl border border-white/10 bg-slate-950/70 px-3 transition focus-within:border-amber-300/40 focus-within:ring-4 focus-within:ring-amber-400/10">
+              <div className="flex items-center gap-2">
+                <Ticket className="h-4 w-4 text-amber-200/70" aria-hidden="true" />
+                <input
+                  id="age"
+                  name="age"
+                  type="number"
+                  inputMode="numeric"
+                  min={8}
+                  max={120}
+                  placeholder="Contoh: 21"
+                  className="h-12 w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+                />
+              </div>
+            </div>
+          </motion.div>
 
-      <footer className="mt-6 text-center text-sm text-slate-600" data-register-action>
-        <p>
-          Sudah punya akun?{" "}
-          <Link href="/login" className="font-semibold text-emerald-700 transition hover:text-emerald-600 hover:underline">
-            Masuk
-          </Link>
-        </p>
-      </footer>
-    </section>
+          <motion.div className="space-y-2" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.48, duration: 0.5 }}>
+            <label htmlFor="password" className="text-sm font-medium text-slate-200">
+              Password
+            </label>
+            <div className="group rounded-2xl border border-white/10 bg-slate-950/70 px-3 transition focus-within:border-amber-300/40 focus-within:ring-4 focus-within:ring-amber-400/10">
+              <div className="flex items-center gap-2">
+                <Film className="h-4 w-4 text-amber-200/70" aria-hidden="true" />
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  autoComplete="new-password"
+                  placeholder="Buat password aman"
+                  className="h-12 w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.58, duration: 0.45 }}>
+            <motion.button
+              type="submit"
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.01, y: -1 }}
+              whileTap={{ scale: 0.99 }}
+              className="group flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-white text-sm font-semibold text-slate-950 shadow-[0_16px_40px_rgba(255,255,255,0.12)] transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              <Sparkles className="h-4 w-4 transition-transform group-hover:rotate-12" aria-hidden="true" />
+              {isSubmitting ? "Memproses..." : "Daftar"}
+            </motion.button>
+          </motion.div>
+        </form>
+        
+
+        {errorMessage ? <p className="mt-3 text-sm text-rose-300">{errorMessage}</p> : null}
+
+        <motion.footer className="mt-6 text-center text-sm text-white" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.68, duration: 0.45 }}>
+          <p>
+            Sudah punya akun?{" "}
+            <Link href="/login" className="font-semibold text-white transition hover:text-gray-200 hover:underline">
+              Masuk
+            </Link>
+          </p>
+        </motion.footer>
+      </div>
+    </motion.section>
+
+    
   );
 }

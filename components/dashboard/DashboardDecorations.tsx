@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { motion } from "framer-motion";
 
 interface DecorationItem {
   readonly id: string;
@@ -12,14 +11,14 @@ interface DecorationItem {
 
 const DASHBOARD_DECORATIONS: ReadonlyArray<DecorationItem> = [
   {
-    id: "recycle-top-left",
-    icon: "♻️",
+    id: "film-top-left",
+    icon: "🎬",
     className: "left-3 top-24 text-2xl sm:left-8 sm:text-3xl",
     rotate: true,
   },
   {
     id: "trash-bin-left-bottom",
-    icon: "🗑️",
+    icon: "🎬",
     className: "bottom-20 left-4 text-2xl sm:left-10 sm:text-3xl",
   },
   {
@@ -29,12 +28,12 @@ const DASHBOARD_DECORATIONS: ReadonlyArray<DecorationItem> = [
   },
   {
     id: "plastic-bottle-right-mid",
-    icon: "🧴",
+    icon: "🎬",
     className: "right-4 top-1/2 hidden text-2xl md:block md:text-3xl",
   },
   {
     id: "leaf-mid-left",
-    icon: "🍃",
+    icon: "🎞️",
     className: "left-1/4 top-1/3 hidden text-2xl md:block md:text-3xl",
     rotate: true,
   },
@@ -56,57 +55,42 @@ const DASHBOARD_DECORATIONS: ReadonlyArray<DecorationItem> = [
   },
 ];
 
-export default function DashboardDecorations() {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(".dashboard-float", {
-        y: (index: number) => (index % 2 === 0 ? -12 : 10),
-        x: (index: number) => (index % 3 === 0 ? 8 : -7),
-        duration: (index: number) => 5.6 + index * 0.5,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut",
-        stagger: 0.16,
-      });
-
-      gsap.to(".dashboard-rotate", {
-        rotate: 360,
-        duration: 24,
-        repeat: -1,
-        ease: "none",
-      });
-
-      gsap.to(".dashboard-blob", {
-        x: "+=28",
-        y: "-=20",
-        duration: 9,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: 0.5,
-      });
-    }, wrapperRef);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
-
+export default function DashboardDcinemarations() {
   return (
-    <div ref={wrapperRef} className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <div className="dashboard-blob absolute -left-16 top-24 h-48 w-48 rounded-full bg-emerald-300/20 blur-3xl sm:h-64 sm:w-64" />
-      <div className="dashboard-blob absolute -right-24 top-1/3 h-64 w-64 rounded-full bg-lime-300/20 blur-3xl sm:h-80 sm:w-80" />
-      <div className="dashboard-blob absolute bottom-0 left-1/4 h-56 w-56 rounded-full bg-emerald-200/20 blur-3xl sm:h-72 sm:w-72" />
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <motion.div
+        className="absolute -left-16 top-24 h-48 w-48 rounded-full bg-amber-300/20 blur-3xl sm:h-64 sm:w-64"
+        animate={{ x: [0, 28, 0], y: [0, -20, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute -right-24 top-1/3 h-64 w-64 rounded-full bg-amber-300/20 blur-3xl sm:h-80 sm:w-80"
+        animate={{ x: [0, 20, 0], y: [0, -16, 0] }}
+        transition={{ duration: 9.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-1/4 h-56 w-56 rounded-full bg-amber-200/20 blur-3xl sm:h-72 sm:w-72"
+        animate={{ x: [0, 16, 0], y: [0, -14, 0] }}
+        transition={{ duration: 8.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
 
-      {DASHBOARD_DECORATIONS.map((item) => (
-        <span
+      {DASHBOARD_DECORATIONS.map((item, index) => (
+        <motion.span
           key={item.id}
-          className={`dashboard-float absolute opacity-20 ${item.className} ${item.rotate ? "dashboard-rotate" : ""}`}
+          className={`absolute opacity-20 ${item.className}`}
+          animate={{
+            y: [0, index % 2 === 0 ? -12 : 10, 0],
+            x: [0, index % 3 === 0 ? 8 : -7, 0],
+            rotate: item.rotate ? [0, 360] : 0,
+          }}
+          transition={{
+            duration: 5.6 + index * 0.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         >
           {item.icon}
-        </span>
+        </motion.span>
       ))}
     </div>
   );

@@ -9,26 +9,26 @@ import {
 export const howItWorksSteps: HowItWorksStep[] = [
   {
     id: 1,
-    title: 'Upload Foto Sampah',
-    description: 'Ambil foto sampah yang ingin dipilah menggunakan kamera smartphone kamu.',
+    title: 'Setup Production',
+    description: 'Siapkan crew, talent, dan equipment untuk project filmmu dengan mudah.',
     icon: '📸',
   },
   {
     id: 2,
-    title: 'AI Mengklasifikasi',
-    description: 'Teknologi AI kami mengenali dan mengklasifikasi jenis sampah secara otomatis.',
+    title: 'AI Documentation',
+    description: 'Dokumentasi otomatis setiap peran, tugas, dan footage dalam satu sistem terpadu.',
     icon: '🤖',
   },
   {
     id: 3,
-    title: 'Dapatkan Poin',
-    description: 'Setiap pemilahan yang tepat memberikan poin reward untuk pencapaianmu.',
+    title: 'Build Portfolio',
+    description: 'Setiap proyek yang selesai menambah kredibilitas dan professional record kamu.',
     icon: '⭐',
   },
   {
     id: 4,
-    title: 'Naik Peringkat',
-    description: 'Kumpulkan poin dan bersaing dengan pengguna lain di leaderboard global.',
+    title: 'Get Recognition',
+    description: 'Dapatkan opportunities dan connect dengan filmmaker lain di komunitas global.',
     icon: '🏆',
   },
 ];
@@ -36,15 +36,15 @@ export const howItWorksSteps: HowItWorksStep[] = [
 export const features: Feature[] = [
   {
     id: 1,
-    title: 'Klasifikasi AI',
-    description: 'Teknologi machine learning yang akurat mengenali 5 kategori sampah secara instant.',
+    title: 'Smart Organization',
+    description: 'Machine learning yang akurat mengorganisir 500+ parameter produksi film secara instant.',
     icon: '🧠',
-    color: 'from-emerald-400 to-teal-500',
+    color: 'from-amber-400 to-rose-500',
   },
   {
     id: 2,
-    title: 'Sistem Poin',
-    description: 'Kumpulkan poin dari setiap pemilahan dan tukar dengan reward menarik.',
+    title: 'Collaboration Tools',
+    description: 'Kelola tim dan dokumentasikan setiap role dari creatives hingga technical crew.',
     icon: '💰',
     color: 'from-amber-400 to-orange-500',
   },
@@ -67,12 +67,12 @@ export const features: Feature[] = [
     title: 'Statistik Lingkungan',
     description: 'Lihat dampak positifmu terhadap lingkungan melalui dashboard personal.',
     icon: '🌍',
-    color: 'from-green-400 to-lime-500',
+    color: 'from-amber-400 to-amber-500',
   },
   {
     id: 6,
     title: 'Riwayat Pemilahan',
-    description: 'Pantau semua aktivitas pemilahan sampahmu dalam satu tempat.',
+    description: 'Pantau semua aktivitas pemilahan productionmu dalam satu tempat.',
     icon: '📝',
     color: 'from-purple-400 to-indigo-500',
   },
@@ -105,11 +105,11 @@ export const leaderboardUsers: LeaderboardUser[] = [
 export const impactStats: ImpactStat[] = [
   {
     id: 1,
-    label: 'Sampah Terklasifikasi',
+    label: 'production Terklasifikasi',
     value: 1200,
     suffix: '+',
-    icon: '🗑️',
-    color: 'from-emerald-400 to-teal-500',
+    icon: '🎬',
+    color: 'from-amber-400 to-rose-500',
   },
   {
     id: 2,
@@ -129,7 +129,7 @@ export const impactStats: ImpactStat[] = [
   },
   {
     id: 4,
-    label: 'Kategori Sampah',
+    label: 'Kategori production',
     value: 5,
     suffix: '',
     icon: '📦',
@@ -148,7 +148,7 @@ export const floatingIcons: FloatingIconConfig[] = [
   },
   {
     id: 'leaf',
-    icon: '🍃',
+    icon: '🎞️',
     delay: 0.5,
     duration: 5,
     x: 120,
@@ -156,7 +156,7 @@ export const floatingIcons: FloatingIconConfig[] = [
   },
   {
     id: 'recycle',
-    icon: '♻️',
+    icon: '🎬',
     delay: 1,
     duration: 4.5,
     x: -120,
@@ -181,7 +181,7 @@ export const floatingIcons: FloatingIconConfig[] = [
 ];
 
 export const LOGIN_BENEFITS = [
-  { id: 'benefit-1', text: 'AI membantu identifikasi sampah lebih cepat.' },
+  { id: 'benefit-1', text: 'AI membantu identifikasi production lebih cepat.' },
   { id: 'benefit-2', text: 'Poin dan badge memotivasi kebiasaan positif.' },
   { id: 'benefit-3', text: 'Dashboard progres mudah dipantau dari mobile.' },
 ] as const;

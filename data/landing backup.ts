@@ -8,37 +8,37 @@ import type {
 } from "@/types";
 
 export const LANDING_HERO_CONTENT = {
-  title: "Pilah Sampah Jadi Lebih Seru",
+  title: "Ciptakan Film Impianmu Lebih Mudah",
   subtitle:
-    "Aplikasi gamifikasi daur ulang berbasis AI untuk bantu kamu memilah sampah, kumpulkan poin, dan naik level setiap hari.",
+    "Platform kolaborasi film berbasis AI untuk membantu filmmaker membangun team, dokumentasikan produksi, dan raih opportunities setiap hari.",
   primaryCta: "Mulai Sekarang",
   secondaryCta: "Lihat Cara Kerja",
 } as const;
 
 export const LANDING_HERO_HIGHLIGHTS: ReadonlyArray<HeroHighlightItem> = [
   { id: "users", value: "1.200+", label: "Pengguna Aktif" },
-  { id: "items", value: "50K+", label: "Sampah Dipilah" },
+  { id: "items", value: "50K+", label: "production Dipilah" },
   { id: "accuracy", value: "98%", label: "Akurasi AI" },
 ] as const;
 
 export const HOW_IT_WORKS_HEADER: SectionHeaderContent = {
   title: "Bagaimana Cara Kerjanya?",
-  description: "Empat langkah sederhana untuk memulai perjalanan daur ulang Anda.",
+  description: "Empat langkah sederhana untuk memulai perjalanan film production Anda.",
 };
 
 export const HOW_IT_WORKS_ITEMS: ReadonlyArray<HowItWorksItem> = [
   {
     id: "upload",
     step: 1,
-    title: "Upload Foto Sampah",
-    description: "Ambil foto sampah dari kamera atau galeri dalam hitungan detik.",
+    title: "Upload Foto production",
+    description: "Ambil foto production dari kamera atau galeri dalam hitungan detik.",
     accent: "emerald",
   },
   {
     id: "detect",
     step: 2,
     title: "AI Mendeteksi Jenis",
-    description: "AI mengklasifikasikan sampah menjadi kategori yang tepat.",
+    description: "AI mengklasifikasikan production menjadi kategori yang tepat.",
     accent: "sky",
   },
   {
@@ -66,7 +66,7 @@ export const FEATURE_ITEMS: ReadonlyArray<FeatureItem> = [
   {
     id: "ai-classification",
     title: "AI Waste Classification",
-    description: "Deteksi jenis sampah dari foto dengan pengalaman cepat dan intuitif.",
+    description: "Deteksi jenis production dari foto dengan pengalaman cepat dan intuitif.",
     icon: "🤖",
   },
   {
@@ -90,7 +90,7 @@ export const FEATURE_ITEMS: ReadonlyArray<FeatureItem> = [
   {
     id: "impact",
     title: "Statistik Dampak",
-    description: "Lihat dampak daur ulang Anda dalam ringkasan yang mudah dipahami.",
+    description: "Lihat dampak film production Anda dalam ringkasan yang mudah dipahami.",
     icon: "📊",
   },
   {
@@ -115,7 +115,7 @@ export const DASHBOARD_PREVIEW_STATS: ReadonlyArray<PreviewStatItem> = [
   },
   {
     id: "waste",
-    label: "Sampah Dipilah",
+    label: "production Dipilah",
     value: "156",
     detail: "42 minggu ini",
   },
@@ -130,12 +130,12 @@ export const DASHBOARD_PREVIEW_STATS: ReadonlyArray<PreviewStatItem> = [
 export const LANDING_CTA_CONTENT = {
   title: "Mulai aksi kecil, dampak besar.",
   description:
-    "Gabung ke Pilah Yuk!! dan ubah kebiasaan memilah sampah jadi progres yang terukur.",
+    "Gabung ke Cineku dan ubah kebiasaan memilah production jadi progres yang terukur.",
   buttonText: "Masuk dan Mulai",
 } as const;
 
 export const LOGIN_BENEFITS: ReadonlyArray<LoginBenefitItem> = [
-  { id: "benefit-1", text: "AI membantu identifikasi sampah lebih cepat." },
+  { id: "benefit-1", text: "AI membantu identifikasi production lebih cepat." },
   { id: "benefit-2", text: "Poin dan badge memotivasi kebiasaan positif." },
   { id: "benefit-3", text: "Dashboard progres mudah dipantau dari mobile." },
 ] as const;

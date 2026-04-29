@@ -10,8 +10,8 @@ export const DASHBOARD_USER: DashboardUser = {
   name: "Dafa Rizqy",
   points: 320,
   level: 5,
-  recycledItems: 24,
-  activeBadge: "Eco Beginner",
+  projectsCreated: 24,
+  activeBadge: "Film Maker Beginner",
 };
 
 export const DASHBOARD_STATS: ReadonlyArray<DashboardStatItem> = [
@@ -33,17 +33,17 @@ export const DASHBOARD_STATS: ReadonlyArray<DashboardStatItem> = [
   },
   {
     id: "recycled",
-    label: "Sampah Dipilah",
-    value: String(DASHBOARD_USER.recycledItems),
-    caption: "5 item hari ini",
-    icon: "♻️",
+    label: "Proyek Dibuat",
+    value: String(DASHBOARD_USER.projectsCreated),
+    caption: "5 proyek bulan ini",
+    icon: "🎬",
     tone: "amber",
   },
   {
     id: "badge",
     label: "Badge Aktif",
     value: DASHBOARD_USER.activeBadge,
-    caption: "Badge berikutnya: Eco Pro",
+    caption: "Badge berikutnya: Film Maker Pro",
     icon: "🏅",
     tone: "violet",
   },
@@ -55,7 +55,7 @@ export const WEEKLY_CHALLENGES: ReadonlyArray<ChallengeItem> = [
     title: "Kumpulkan 10 item plastik",
     current: 6,
     target: 10,
-    icon: "🧴",
+    icon: "🎬",
   },
   {
     id: "daily-streak-7",
@@ -81,17 +81,17 @@ export const LEADERBOARD_MINI: ReadonlyArray<LeaderboardEntry> = [
 
 export const USER_BADGES: ReadonlyArray<UserBadge> = [
   {
-    id: "badge-eco-beginner",
-    name: "Eco Beginner",
+    id: "badge-cinema-beginner",
+    name: "Film Maker Beginner",
     description: "Menyelesaikan 20 upload pertama.",
-    icon: "🌱",
+    icon: "🎬",
     unlocked: true,
   },
   {
     id: "badge-plastic-hunter",
     name: "Plastic Hunter",
     description: "Mengumpulkan 50 item plastik.",
-    icon: "♻️",
+    icon: "🎬",
     unlocked: false,
   },
   {
