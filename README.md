@@ -1,70 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🎬 Cineku
 
+A modern web platform for showcasing, discovering, and interacting with Indonesian film creators.
+🚀 Overview
 
-# ♻️ Recycle-Bin App
+Cineku is a full-stack web application designed to support Indonesian filmmakers by providing a platform to:
 
-Aplikasi web berbasis **AI + Web Modern** untuk pengelolaan dan analisis data terkait Recycle-Bin.  
-Project ini menggunakan **Next.js 16**, **Prisma ORM**, dan **FastAPI** untuk model AI/ML.
+    Showcase film projects
+    Build professional portfolios
+    Discover new films
+    Interact with audiences
 
----
+This platform combines the concepts of:
 
-## 🚀 Tech Stack
+    Instagram → social interaction
+    Netflix → film discovery
+    IMDb → creator portfolio
 
-### Frontend & Backend (Web)
-- **Next.js**: v16 (App Router)
-- **React**: v18
-- **TypeScript**
-- **Tailwind CSS**
-- **shadcn/ui**
-- **lucide-react (icons)**
-- **Framer Motion (animation)**
+✨ Features
 
-### Database
-- **Prisma ORM**: v5+
-- **Database**: SQLite / PostgreSQL
+    Google Authentication (NextAuth)
+    User onboarding system
+    Film showcase & discovery
+    Like & comment system
+    Smart search (film, creator, genre)
+    Creator profile (portfolio style)
+    Role-based system (User, Creator, Admin)
+    Fully responsive UI (mobile & desktop)
+    Modern UI (Netflix-inspired)
 
-### Artificial Intelligence
-- **Python**: 3.10+
-- **FastAPI**
-- **TensorFlow / PyTorch** (opsional, sesuai model)
-- **Uvicorn**
+🛠️ Tech Stack
 
----
+    Frontend: Next.js (App Router), React, TypeScript
+    Styling: Tailwind CSS
+    Backend: Next.js API Routes
+    Auth: NextAuth.js (Google OAuth)
+    Database: PostgreSQL
+    ORM: Prisma
+    API Communication: Axios / Fetch API
 
-## 📂 Struktur Repository
+⚙️ Core Systems
+Authentication
 
+    Google OAuth login only
+    JWT-based session
+    Auto user creation
+    Onboarding after first login
 
-## Getting Started
+Film System
 
-First, run the development server:
+    Film upload (metadata-based)
+    Genre & tagging system
+    SEO-friendly URLs
 
-```bash
+Interaction System
+
+    Like, comment, and engagement
+    Protected API (requires login)
+
+Creator System
+
+    Professional creator profile
+    Portfolio-style display
+
+🧠 Architecture
+
+Cineku uses modern Next.js features:
+
+    App Router
+    Server & Client Components
+    API Route Handlers
+    Dynamic Routing (/film/[slug], /creator/[username])
+    Middleware / Proxy for route protection
+
+🗄️ Database
+
+Managed using Prisma ORM + PostgreSQL
+
+Main tables:
+
+    users
+    creator_profiles
+    films
+    genres
+    comments
+    likes
+    follows
+
+⚡ Installation
+
+git clone https://github.com/your-username/cineku.git
+cd cineku
+npm install
+🔐 Environment Variables
+
+Create .env file:
+
+DATABASE_URL=your_database_url
+NEXTAUTH_SECRET=your_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+▶️ Run Locally
+
+npx prisma generate
+npx prisma migrate dev
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🌍 Deployment
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Recommended:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Optional:
 
-## Learn More
+    VPS (Linux + Nginx)
+    Docker
 
-To learn more about Next.js, take a look at the following resources:
+🚀 Roadmap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    AI Tag Generator
+    Recommendation system
+    Collaboration system (crew hiring)
+    Film festival mode
+    Monetization system
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+👨‍💻 Author
 
-## Deploy on Vercel
+Dafa Rizqy
+GitHub: https://github.com/MemoriesEndX
+Portfolio: https://tokodaffa.my.id/portofolio
+LinkedIn: https://linkedin.com/in/daffa-rizqy-738950237
+📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is built for educational and portfolio purposes.
